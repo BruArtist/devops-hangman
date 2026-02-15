@@ -218,6 +218,8 @@ function updateWrongLetters() {
     }
 }
 
+//test
+
 function updateLives() {
     const livesLeft = gameState.maxWrong - gameState.wrongGuesses;
     document.getElementById('livesLeft').textContent = livesLeft;
