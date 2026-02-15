@@ -171,6 +171,7 @@ function nextRound() {
 }
 
 function guessLetter(letter) {
+    letter = letter.toUpperCase();  // Add this line
     if (!gameState.gameActive) return;
     
     if (gameState.guessedLetters.includes(letter)) {
@@ -179,7 +180,7 @@ function guessLetter(letter) {
     
     gameState.guessedLetters.push(letter);
     
-    if (!gameState.currentWord.includes(letter)) {
+    if (!gameState.currentWord.toUpperCase().includes(letter)) {  // Ensure comparison is uppercase
         gameState.wrongGuesses++;
         updateHangman();
     }
@@ -218,8 +219,10 @@ function updateWrongLetters() {
     }
 }
 
+//test
+
 function updateLives() {
-    const livesLeft = gameState.maxWrong - gameState.wrongGuesses +1 ;
+    const livesLeft = gameState.maxWrong - gameState.wrongGuesses;
     document.getElementById('livesLeft').textContent = livesLeft;
 }
 
