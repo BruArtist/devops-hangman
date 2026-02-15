@@ -93,13 +93,22 @@ function displayWordBank() {
 
 function addWord() {
     const input = document.getElementById('newWord');
-    const word = input.value.trim().toUpperCase();
+    let word = input.value.trim().toUpperCase();
 
+    // Validate that the word contains only letters
+    if (!/^[A-Z]+$/.test(word)) {
+        alert('Invalid word! Please enter letters only (A-Z).');
+        input.value = '';
+        return;
+    }
+
+    // Add word to the bank
     wordBank.push(word);
     input.value = '';
     saveWordBank();
     displayWordBank();
 }
+
 
 function editWord(index) {
     const newWord = prompt('Edit word:', wordBank[index]);
